@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Racon Blog - Ağır abilerin sözleri burada yankılanır." />
+    <title>Racon Blog</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Racon Blog</h1>
+        <input type="text" id="searchInput" placeholder="Bir racon ara..." />
+        <nav>
+            <button id="loginBtn">Giriş Yap</button>
+            <button id="logoutBtn" style="display:none;">Çıkış Yap</button>
+            <span id="userDisplay"></span>
+        </nav>
+    </header>
+
+    <main>
+        <section id="posts">
+            <!-- Yazılar buraya gelecek -->
+        </section>
+
+        <section id="commentSection" style="display:none;">
+            <h3>Yorum Yap</h3>
+            <textarea id="commentText" placeholder="Yorumunu yaz..."></textarea><br />
+            <button id="submitComment">Gönder</button>
+            <div id="commentsList"></div>
+        </section>
+
+        <section id="contactSection">
+            <h3>İletişim Formu</h3>
+            <form id="contactForm">
+                <input type="text" id="contactName" placeholder="Adın" required /><br />
+                <input type="email" id="contactEmail" placeholder="Email" required /><br />
+                <textarea id="contactMessage" placeholder="Mesajın" required></textarea><br />
+                <button type="submit">Gönder</button>
+            </form>
+            <div id="contactResult"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div>Takipçi Sayacı: <span id="followerCount">1345</span></div>
+        <div>
+            Sosyal Medya:
+            <a href="#" class="socialBtn" title="Facebook">Fb</a>
+            <a href="#" class="socialBtn" title="Twitter">Tw</a>
+            <a href="#" class="socialBtn" title="Instagram">İg</a>
+        </div>
+        <p>&copy; 2025 Racon Blog | Hayırlı Cumalar</p>
+    </footer>
+
+    <!-- Giriş Modal -->
+    <div id="loginModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="closeBtn" id="closeLogin">&times;</span>
+            <h2>Giriş Yap</h2>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Kullanıcı Adı" required /><br />
+                <input type="password" id="password" placeholder="Şifre" required /><br />
+                <button type="submit">Giriş</button>
+            </form>
+            <div id="loginMessage"></div>
+        </div>
+    </div>
+
+</body>
+</html>
