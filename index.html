@@ -67,14 +67,61 @@
             <div id="loginMessage"></div>
         </div>
     </div>
-const firebaseConfig = {
-  apiKey: "AIzaSyAnw_JgoA7ZrVCG94pRc-KExFu2v7SenYw",
-  authDomain: "raconubabasi.firebaseapp.com",
-  projectId: "raconubabasi",
-  storageBucket: "raconubabasi.firebasestorage.app",
-  messagingSenderId: "14034844570",
-  appId: "1:14034844570:web:2c1dc1a596218e8d7e9823",
-  measurementId: "G-L5WBB2BYYJ"
-};
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAnw_JgoA7ZrVCG94pRc-KExFu2v7SenYw",
+    authDomain: "raconubabasi.firebaseapp.com",
+    projectId: "raconubabasi",
+    storageBucket: "raconubabasi.firebasestorage.app",
+    messagingSenderId: "14034844570",
+    appId: "1:14034844570:web:2c1dc1a596218e8d7e9823",
+    measurementId: "G-L5WBB2BYYJ"
+  };
+
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  function kayitOl() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    auth.createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        alert("Kayıt başarılı!");
+      })
+      .catch((error) => {
+        alert("Hata: " + error.message);
+      });
+  }
+
+  function girisYap() {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    auth.signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        alert("Giriş başarılı!");
+      })
+      .catch((error) => {
+        alert("Hata: " + error.message);
+      });
+  }
+</script>
+<!-- Kayıt Ol Bölümü -->
+<h2>Kayıt Ol</h2>
+<input type="email" id="email" placeholder="Email"><br>
+<input type="password" id="password" placeholder="Şifre"><br>
+<button onclick="kayitOl()">Kayıt Ol</button>
+
+<!-- Giriş Yap Bölümü -->
+<h2>Giriş Yap</h2>
+<input type="email" id="loginEmail" placeholder="Email"><br>
+<input type="password" id="loginPassword" placeholder="Şifre"><br>
+<button onclick="girisYap()">Giriş Yap</button>
+
 </body>
 </html>
