@@ -1,127 +1,68 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Racon Blog - Dünyaya racon kesen sözler burada." />
-    <title>Racon Blog</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="app.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Racon Blog - Kayıt & Giriş</title>
 </head>
 <body>
-    <header>
-        <h1>Racon Blog</h1>
-        <input type="text" id="searchInput" placeholder="Bir racon ara..." />
-        <nav>
-            <button id="loginBtn">Giriş Yap</button>
-            <button id="logoutBtn" style="display:none;">Çıkış Yap</button>
-            <span id="userDisplay"></span>
-        </nav>
-    </header>
+  <h1>Racon Blog</h1>
 
-    <main>
-        <section id="posts">
-            <!-- Yazılar buraya gelecek -->
-        </section>
+  <!-- Kayıt Ol Bölümü -->
+  <h2>Kayıt Ol</h2>
+  <input type="email" id="email" placeholder="Email" /><br />
+  <input type="password" id="password" placeholder="Şifre" /><br />
+  <button onclick="kayitOl()">Kayıt Ol</button>
 
-        <section id="commentSection" style="display:none;">
-            <h3>Yorum Yap</h3>
-            <textarea id="commentText" placeholder="Yorumunu yaz..."></textarea><br />
-            <button id="submitComment">Gönder</button>
-            <div id="commentsList"></div>
-        </section>
+  <!-- Giriş Yap Bölümü -->
+  <h2>Giriş Yap</h2>
+  <input type="email" id="loginEmail" placeholder="Email" /><br />
+  <input type="password" id="loginPassword" placeholder="Şifre" /><br />
+  <button onclick="girisYap()">Giriş Yap</button>
 
-        <section id="contactSection">
-            <h3>İletişim Formu</h3>
-            <form id="contactForm">
-                <input type="text" id="contactName" placeholder="Adın" required /><br />
-                <input type="email" id="contactEmail" placeholder="Email" required /><br />
-                <textarea id="contactMessage" placeholder="Mesajın" required></textarea><br />
-                <button type="submit">Gönder</button>
-            </form>
-            <div id="contactResult"></div>
-        </section>
-    </main>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
 
-    <footer>
-        <div>Takipçi Sayacı: <span id="followerCount">1345</span></div>
-        <div>
-            Sosyal Medya:
-            <a href="#" class="socialBtn" title="Facebook">Fb</a>
-            <a href="#" class="socialBtn" title="Instagram">İns</a>
-        </div>
-        <p>&copy; 2025 Racon Blog | Mehmet Emin Buba</p>
-    </footer>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAnw_JgoA7ZrVCG94pRc-KExFu2v7SenYw",
+      authDomain: "raconubabasi.firebaseapp.com",
+      projectId: "raconubabasi",
+      storageBucket: "raconubabasi.firebasestorage.app",
+      messagingSenderId: "14034844570",
+      appId: "1:14034844570:web:2c1dc1a596218e8d7e9823",
+      measurementId: "G-L5WBB2BYYJ"
+    };
 
-    <!-- Giriş Modal -->
-    <div id="loginModal" class="modal" style="display:none;">
-        <div class="modal-content">
-            <span class="closeBtn" id="closeLogin">&times;</span>
-            <h2>Giriş Yap</h2>
-            <form id="loginForm">
-                <input type="text" id="username" placeholder="Kullanıcı Adı" required /><br />
-                <input type="password" id="password" placeholder="Şifre" required /><br />
-                <button type="submit">Giriş</button>
-            </form>
-            <div id="loginMessage"></div>
-        </div>
-    </div>
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
 
-    <!-- Kayıt Ol Bölümü -->
-    <h2>Kayıt Ol</h2>
-    <input type="email" id="email" placeholder="Email" /><br />
-    <input type="password" id="password" placeholder="Şifre" /><br />
-    <button onclick="kayitOl()">Kayıt Ol</button>
+    function kayitOl() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
-    <!-- Giriş Yap Bölümü -->
-    <h2>Giriş Yap</h2>
-    <input type="email" id="loginEmail" placeholder="Email" /><br />
-    <input type="password" id="loginPassword" placeholder="Şifre" /><br />
-    <button onclick="girisYap()">Giriş Yap</button>
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          alert("Kayıt başarılı!");
+        })
+        .catch(error => {
+          alert("Hata: " + error.message);
+        });
+    }
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    function girisYap() {
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
 
-    <script>
-      const firebaseConfig = {
-        apiKey: "AIzaSyAnw_JgoA7ZrVCG94pRc-KExFu2v7SenYw",
-        authDomain: "raconubabasi.firebaseapp.com",
-        projectId: "raconubabasi",
-        storageBucket: "raconubabasi.firebasestorage.app",
-        messagingSenderId: "14034844570",
-        appId: "1:14034844570:web:2c1dc1a596218e8d7e9823",
-        measurementId: "G-L5WBB2BYYJ"
-      };
-
-      const app = firebase.initializeApp(firebaseConfig);
-      const auth = firebase.auth();
-
-      function kayitOl() {
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-
-        auth.createUserWithEmailAndPassword(email, password)
-          .then((userCredential) => {
-            alert("Kayıt başarılı!");
-          })
-          .catch((error) => {
-            alert("Hata: " + error.message);
-          });
-      }
-
-      function girisYap() {
-        const email = document.getElementById("loginEmail").value;
-        const password = document.getElementById("loginPassword").value;
-
-        auth.signInWithEmailAndPassword(email, password)
-          .then((userCredential) => {
-            alert("Giriş başarılı!");
-          })
-          .catch((error) => {
-            alert("Hata: " + error.message);
-          });
-      }
-    </script>
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          alert("Giriş başarılı!");
+        })
+        .catch(error => {
+          alert("Hata: " + error.message);
+        });
+    }
+  </script>
 </body>
 </html>
