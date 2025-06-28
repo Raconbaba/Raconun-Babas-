@@ -1,92 +1,41 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Racon Blog</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Racon Blog</title>
+<link rel="stylesheet" href="style.css" />
+<script type="module" src="app.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>Racon Blog</h1>
-    <div id="userDisplay"></div>
-    <div class="btns">
-      <button onclick="openModal('login')">Giriş Yap</button>
-      <button onclick="openModal('register')">Üye Ol</button>
-    </div>
-  </header>
+<header>
+  <div class="logo">Racon Blog</div>
+  <nav>
+    <span id="userDisplay" class="user-display"></span>
+    <button id="btnLogin" class="btn action-btn">Giriş Yap</button>
+    <button id="btnRegister" class="btn action-btn">Üye Ol</button>
+    <button id="btnLogout" class="btn action-btn" style="display:none;">Çıkış Yap</button>
+  </nav>
+</header>
 
-  <div id="notification" class="notification"></div>
+<main>
+  <h1>Racon Sözleri</h1>
+  <p>Site içeriği buraya gelecek...</p>
+</main>
 
-  <div id="authModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2 id="modalTitle">Giriş</h2>
-      <input type="email" id="emailInput" placeholder="Email" />
-      <input type="password" id="passwordInput" placeholder="Şifre" />
-      <button onclick="submitAuth()">Gönder</button>
-    </div>
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <h2 id="modalTitle"></h2>
+    <form id="authForm">
+      <input type="text" id="usernameInput" placeholder="Kullanıcı Adı" class="hidden" autocomplete="username" />
+      <input type="email" id="emailInput" placeholder="E-posta" required autocomplete="email" />
+      <input type="password" id="passwordInput" placeholder="Şifre" required autocomplete="current-password" />
+      <button type="submit" class="btn submit-btn"></button>
+    </form>
+    <button id="modalClose" class="btn close-btn">Kapat</button>
   </div>
+</div>
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAnw_JgoA7ZrVCG94pRc-KExFu2v7SenYw",
-      authDomain: "raconubabasi.firebaseapp.com",
-      projectId: "raconubabasi",
-      storageBucket: "raconubabasi.firebasestorage.app",
-      messagingSenderId: "14034844570",
-      appId: "1:14034844570:web:2c1dc1a596218e8d7e9823",
-      measurementId: "G-L5WBB2BYYJ"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    let currentMode = 'login';
-
-    function openModal(mode) {
-      currentMode = mode;
-      document.getElementById("modalTitle").innerText = mode === "login" ? "Giriş Yap" : "Üye Ol";
-      document.getElementById("authModal").style.display = "flex";
-    }
-
-    function closeModal() {
-      document.getElementById("authModal").style.display = "none";
-    }
-
-    function showNotification(message) {
-      const notif = document.getElementById("notification");
-      notif.innerText = "✔ " + message;
-      notif.style.display = "block";
-      setTimeout(() => {
-        notif.style.display = "none";
-      }, 3000);
-    }
-
-    function submitAuth() {
-      const email = document.getElementById("emailInput").value;
-      const password = document.getElementById("passwordInput").value;
-
-      if (currentMode === "login") {
-        auth.signInWithEmailAndPassword(email, password)
-          .then(() => {
-            closeModal();
-            showNotification("Giriş Yapıldı");
-            document.getElementById("userDisplay").innerText = "Hoş geldin: " + email;
-          })
-          .catch(error => alert("Hata: " + error.message));
-      } else {
-        auth.createUserWithEmailAndPassword(email, password)
-          .then(() => {
-            closeModal();
-            showNotification("Üye Olundu");
-            document.getElementById("userDisplay").innerText = "Hoş geldin: " + email;
-          })
-          .catch(error => alert("Hata: " + error.message));
-      }
-    }
-  </script>
+<div id="notification" class="notification hidden"></div>
 </body>
 </html>
