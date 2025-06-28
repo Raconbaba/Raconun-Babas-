@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Racon Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Racon Blog</h1>
+        <div id="userInfo"></div>
+    </header>
+
+    <main>
+        <section id="auth">
+            <div class="form">
+                <h2>Kayıt Ol</h2>
+                <input type="email" id="registerEmail" placeholder="Email">
+                <input type="password" id="registerPassword" placeholder="Şifre">
+                <button onclick="kayitOl()">Kayıt Ol</button>
+            </div>
+
+            <div class="form">
+                <h2>Giriş Yap</h2>
+                <input type="email" id="loginEmail" placeholder="Email">
+                <input type="password" id="loginPassword" placeholder="Şifre">
+                <button onclick="girisYap()">Giriş Yap</button>
+            </div>
+        </section>
+
+        <section id="quotes">
+            <h2>Racon Sözleri</h2>
+            <ul id="sozListesi">
+                <li>"Delikanlı adam raconu bilir, racon da adamını."</li>
+                <li>"Bir adamın edebi yoksa, raconu da olmaz."</li>
+                <li>"Karanlıkta parlayan tek şey racondur."</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAnw_JgoA7ZrVCG94pRc-KExFu2v7SenYw",
+            authDomain: "raconubabasi.firebaseapp.com",
+            projectId: "raconubabasi",
+            storageBucket: "raconubabasi.firebasestorage.app",
+            messagingSenderId: "14034844570",
+            appId: "1:14034844570:web:2c1dc1a596218e8d7e9823",
+            measurementId: "G-L5WBB2BYYJ"
+        };
+
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        function kayitOl() {
+            const email = document.getElementById("registerEmail").value;
+            const password = document.getElementById("registerPassword").value;
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert("Kayıt başarılı!");
+                    document.getElementById("userInfo").innerText = "Hoş geldin: " + email;
+                })
+                .catch((error) => {
+                    alert("Hata: " + error.message);
+                });
+        }
+
+        function girisYap() {
+            const email = document.getElementById("loginEmail").value;
+            const password = document.getElementById("loginPassword").value;
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert("Giriş başarılı!");
+                    document.getElementById("userInfo").innerText = "Hoş geldin: " + email;
+                })
+                .catch((error) => {
+                    alert("Hata: " + error.message);
+                });
+        }
+    </script>
+</body>
+</html>
