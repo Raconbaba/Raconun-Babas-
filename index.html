@@ -1,208 +1,85 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Racon Blog</title>
-  <style>
-    body {margin:0;padding:0;font-family:'Segoe UI',sans-serif; background:#121212;color:#eee}
-    header{display:flex;justify-content:space-between;align-items:center;background:#1f1f1f;padding:1rem 2rem}
-    .logo{font-weight:700;font-size:1.5rem;color:#00ff99}
-    nav button{margin-left:1rem;cursor:pointer}
-    .btn{background:#00ff99;border:none;padding:.5rem 1rem;font-weight:600;color:#121212;border-radius:4px;transition:background .3s}
-    .btn:hover{background:#00cc77}
-    .user-display{color:#00ff99;font-weight:600;margin-right:1rem;user-select:none}
-    #username{cursor:pointer;text-decoration:underline}
-    #userEmail{font-size:.75rem;color:#aaa;margin-top:2px;display:none;user-select:none}
-    .modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);display:flex;justify-content:center;align-items:center;z-index:999}
-    .modal-content{background:#222;padding:2rem;border-radius:8px;width:90%;max-width:400px;text-align:center;color:#eee}
-    .hidden{display:none!important}
-    input,textarea{width:100%;padding:.7rem;margin:.7rem 0;border-radius:4px;border:none;background:#2a2a2a;color:#fff;font-size:1rem}
-    textarea{resize:vertical;min-height:100px}
-    .close-btn{margin-top:1rem;background:transparent;color:#00ff99;font-weight:600;cursor:pointer}
-    .notification{position:fixed;top:1rem;right:1rem;background:#00ff99;color:#121212;padding:1rem 1.5rem;border-radius:6px;font-weight:700;box-shadow:0 0 10px #00ff99aa;z-index:1000;user-select:none}
-    #softwareSection{background:#1e1e1e;padding:2rem;margin:2rem;border-radius:8px}
-    #softwareItems{list-style:none;padding:0}
-    #softwareItems li{background:#2a2a2a;margin:1rem 0;padding:1rem;border-radius:6px;color:#eee;font-size:.95rem}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vie Saine avec la Nature</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="logo">Racon Blog</div>
-    <nav>
-      <span id="userDisplay" class="user-display"></span>
-      <button id="btnLogin" class="btn action-btn">Giriş Yap</button>
-      <button id="btnRegister" class="btn action-btn">Üye Ol</button>
-      <button id="btnLogout" class="btn action-btn hidden">Çıkış Yap</button>
-    </nav>
-  </header>
+    <header>
+        <h1>Vie Saine avec la Nature</h1>
+        <nav>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#bienfaits-nature">Bienfaits de la Nature</a></li>
+                <li><a href="#recettes-saines">Recettes Saines</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <h1>Racon Sözleri</h1>
-    <p>Site içeriği buraya gelecek...</p>
+    <main>
+        <section id="accueil" class="hero">
+            <div class="hero-content">
+                <h2>L'Harmonie entre Nature et Santé</h2>
+                <p>Améliorons notre bien-être physique et mental grâce aux miracles que la nature nous offre. Air pur, aliments naturels et moments de paix...</p>
+                <button id="decouvrirButton">En savoir plus</button>
+            </div>
+        </section>
 
-    <section id="softwareSection" class="hidden">
-      <h2>Yazılım Ekle</h2>
-      <form id="softwareForm">
-        <input type="text" id="softwareName" placeholder="Yazılım Adı" required />
-        <textarea id="softwareDesc" placeholder="Açıklama" required></textarea>
-        <button type="submit" class="btn">Ekle</button>
-      </form>
-      <div id="softwareList">
-        <h3>Eklenen Yazılımlar</h3>
-        <ul id="softwareItems"></ul>
-      </div>
-    </section>
-  </main>
+        <section id="bienfaits-nature" class="content-section">
+            <h2>Les Bienfaits de la Nature pour la Santé</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h3>Réduction du Stress</h3>
+                    <p>Passer du temps dans la nature réduit le stress en diminuant les niveaux de cortisol.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Activité Physique</h3>
+                    <p>La nature offre un environnement idéal pour la marche, la course ou le vélo.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Renforcement Immunitaire</h3>
+                    <p>Les microbes et les composés végétaux des environnements naturels soutiennent l'immunité.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Qualité du Sommeil</h3>
+                    <p>L'exposition à la lumière naturelle a un impact positif sur nos cycles de sommeil.</p>
+                </div>
+            </div>
+        </section>
 
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <h2 id="modalTitle"></h2>
-      <form id="authForm">
-        <input type="text" id="usernameInput" placeholder="Kullanıcı Adı" class="hidden" autocomplete="username" />
-        <input type="email" id="emailInput" placeholder="E-posta" required autocomplete="email" />
-        <input type="password" id="passwordInput" placeholder="Şifre" required autocomplete="current-password" />
-        <button type="submit" class="btn submit-btn"></button>
-      </form>
-      <button id="modalClose" class="btn close-btn">Kapat</button>
-    </div>
-  </div>
+        <section id="recettes-saines" class="content-section">
+            <h2>Recettes Naturelles et Saines</h2>
+            <div class="recipe-grid">
+                <div class="recipe-item">
+                    <h3>Smoothie Vert</h3>
+                    <p>Un excellent début de journée plein d'énergie avec épinards, banane, pomme, menthe.</p>
+                    <button class="recipe-detail-button" data-recipe="green-smoothie">Voir la Recette</button>
+                </div>
+                <div class="recipe-item">
+                    <h3>Soupe aux Lentilles</h3>
+                    <p>Un classique nourrissant et réconfortant, ami de l'immunité.</p>
+                    <button class="recipe-detail-button" data-recipe="lentil-soup">Voir la Recette</button>
+                </div>
+            </div>
+            <div id="recipe-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h3 id="modal-recipe-title"></h3>
+                    <p id="modal-recipe-description"></p>
+                    <ul id="modal-recipe-ingredients"></ul>
+                    <p id="modal-recipe-instructions"></p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-  <div id="notification" class="notification hidden"></div>
+    <footer>
+        <p>&copy; 2025 Vie Saine avec la Nature. Tous droits réservés.</p>
+    </footer>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyAnw_JgoA7ZrVCG94pRc-KExFu2v7SenYw",
-      authDomain: "raconubabasi.firebaseapp.com",
-      projectId: "raconubabasi",
-      storageBucket: "raconubabasi.firebasestorage.app",
-      messagingSenderId: "14034844570",
-      appId: "1:14034844570:web:2c1dc1a596218e8d7e9823",
-      measurementId: "G-L5WBB2BYYJ"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    const btnLogin = document.getElementById("btnLogin");
-    const btnRegister = document.getElementById("btnRegister");
-    const btnLogout = document.getElementById("btnLogout");
-    const userDisplay = document.getElementById("userDisplay");
-    const modal = document.getElementById("modal");
-    const modalTitle = document.getElementById("modalTitle");
-    const authForm = document.getElementById("authForm");
-    const modalClose = document.getElementById("modalClose");
-    const usernameInput = document.getElementById("usernameInput");
-    const emailInput = document.getElementById("emailInput");
-    const passwordInput = document.getElementById("passwordInput");
-    const submitBtn = authForm.querySelector(".submit-btn");
-    const notification = document.getElementById("notification");
-    const softwareSection = document.getElementById("softwareSection");
-    const softwareForm = document.getElementById("softwareForm");
-    const softwareItems = document.getElementById("softwareItems");
-
-    let currentMode = null;
-
-    function showNotification(text) {
-      notification.textContent = text;
-      notification.classList.remove("hidden");
-      setTimeout(() => notification.classList.add("hidden"), 2500);
-    }
-
-    function openModal(mode) {
-      currentMode = mode;
-      modalTitle.textContent = mode === "login" ? "Giriş Yap" : "Üye Ol";
-      submitBtn.textContent = mode === "login" ? "Giriş Yap" : "Kayıt Ol";
-      if (mode === "register") {
-        usernameInput.classList.remove("hidden");
-        usernameInput.required = true;
-        passwordInput.placeholder = "Şifre (en az 6 karakter)";
-      } else {
-        usernameInput.classList.add("hidden");
-        usernameInput.required = false;
-        passwordInput.placeholder = "Şifre";
-      }
-      emailInput.value = "";
-      passwordInput.value = "";
-      usernameInput.value = "";
-      modal.classList.remove("hidden");
-      emailInput.focus();
-    }
-
-    btnLogin.addEventListener("click", () => openModal("login"));
-    btnRegister.addEventListener("click", () => openModal("register"));
-    modalClose.addEventListener("click", () => modal.classList.add("hidden"));
-
-    authForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const email = emailInput.value.trim(),
-            password = passwordInput.value.trim();
-      if (currentMode === "login") {
-        signInWithEmailAndPassword(auth, email, password)
-          .then(() => {
-            modal.classList.add("hidden");
-            showNotification("Giriş Yapıldı ✔");
-          })
-          .catch(err => alert("Hata: " + err.message));
-      } else {
-        const username = usernameInput.value.trim();
-        if (username.length < 3) return alert("Kullanıcı adı en az 3 karakter olmalı");
-        createUserWithEmailAndPassword(auth, email, password)
-          .then(u => updateProfile(u.user, { displayName: username }))
-          .then(() => {
-            modal.classList.add("hidden");
-            showNotification("Üye Olundu ✔");
-          })
-          .catch(err => alert("Hata: " + err.message));
-      }
-    });
-
-    btnLogout.addEventListener("click", () => {
-      signOut(auth)
-        .then(() => {
-          showNotification("Çıkış Yapıldı");
-        })
-        .catch(err => alert("Hata: " + err.message));
-    });
-
-    softwareForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const name = document.getElementById("softwareName").value.trim();
-      const desc = document.getElementById("softwareDesc").value.trim();
-      if (name.length < 2 || desc.length < 5) return alert("Lütfen tüm alanları düzgün doldur.");
-      const user = auth.currentUser;
-      const username = user.displayName || "Bilinmeyen";
-      const email = user.email;
-      const li = document.createElement("li");
-      li.innerHTML = `<strong>${name}</strong><br>${desc}<br><small>Ekleyen: ${username} (${email})</small>`;
-      softwareItems.appendChild(li);
-      softwareForm.reset();
-    });
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const displayName = user.displayName || user.email;
-        userDisplay.innerHTML = `<span id="username">${displayName}</span><br><small id="userEmail">${user.email}</small>`;
-        document.getElementById("userEmail").style.display = "none";
-        document.getElementById("username").onclick = () => {
-          const em = document.getElementById("userEmail");
-          em.style.display = (em.style.display === "none" ? "block" : "none");
-        };
-        btnLogin.classList.add("hidden");
-        btnRegister.classList.add("hidden");
-        btnLogout.classList.remove("hidden");
-        softwareSection.classList.remove("hidden");
-      } else {
-        userDisplay.textContent = "";
-        btnLogin.classList.remove("hidden");
-        btnRegister.classList.remove("hidden");
-        btnLogout.classList.add("hidden");
-        softwareSection.classList.add("hidden");
-      }
-    });
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
