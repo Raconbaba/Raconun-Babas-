@@ -1,117 +1,260 @@
+/* Paramètres Généraux */
 body {
-  margin: 0; padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #121212;
-  color: #eee;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
 }
 
+/* Header */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #1f1f1f;
-  padding: 1rem 2rem;
+    background-color: #4CAF50; /* Vert inspiré de la nature */
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.logo {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: #00ff99;
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
 }
 
-nav button {
-  margin-left: 1rem;
-  cursor: pointer;
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }
 
-.btn {
-  background: #00ff99;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-weight: 600;
-  color: #121212;
-  border-radius: 4px;
-  transition: background 0.3s;
+nav ul li {
+    margin: 0 15px;
 }
 
-.btn:hover {
-  background: #00cc77;
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-.user-display {
-  color: #00ff99;
-  font-weight: 600;
-  margin-right: 1rem;
-  user-select: none;
+nav ul li a:hover {
+    color: #d4edda; /* Vert clair */
 }
 
-#username {
-  cursor: pointer;
-  text-decoration: underline;
+/* Section Héro (Accueil) */
+.hero {
+    background: url('https://via.placeholder.com/1500x800/66bb6a/ffffff?text=Paysage+Naturel') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    height: 60vh; /* 60% de la hauteur de l'écran */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-#userEmail {
-  font-size: 0.75rem;
-  color: #aaa;
-  margin-top: 2px;
+.hero-content {
+    background-color: rgba(0,0,0,0.5); /* Arrière-plan semi-transparent pour la lisibilité */
+    padding: 30px;
+    border-radius: 10px;
 }
 
+.hero h2 {
+    font-size: 3em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero p {
+    font-size: 1.2em;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+
+#decouvrirButton {
+    background-color: #2E7D32; /* Vert foncé */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#decouvrirButton:hover {
+    background-color: #1B5E20; /* Vert plus foncé */
+}
+
+/* Sections de Contenu */
+.content-section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.content-section h2 {
+    text-align: center;
+    font-size: 2.2em;
+    color: #4CAF50;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 15px;
+}
+
+/* Grille des Bienfaits */
+.benefits-grid, .recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.benefit-item, .recipe-item {
+    background-color: #f4fce3; /* Vert pastel clair */
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.benefit-item:hover, .recipe-item:hover {
+    transform: translateY(-5px);
+}
+
+.benefit-item h3, .recipe-item h3 {
+    color: #2E7D32;
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.recipe-item button {
+    background-color: #66bb6a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.recipe-item button:hover {
+    background-color: #4CAF50;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+/* Styles du Modal (Popup) */
 .modal {
-  position: fixed;
-  top: 0; left: 0; right:0; bottom:0;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
+    display: none; /* Masqué par défaut */
+    position: fixed; /* Reste au-dessus de l'écran */
+    z-index: 1000; /* Au-dessus de tout le reste */
+    left: 0;
+    top: 0;
+    width: 100%; /* Pleine largeur */
+    height: 100%; /* Pleine hauteur */
+    overflow: auto; /* Barre de défilement si le contenu déborde */
+    background-color: rgba(0,0,0,0.7); /* Arrière-plan noir semi-transparent */
+    display: flex; /* Pour centrer le contenu */
+    align-items: center; /* Centrage vertical */
+    justify-content: center; /* Centrage horizontal */
 }
 
 .modal-content {
-  background: #222;
-  padding: 2rem;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 400px;
-  text-align: center;
-  color: #eee;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%; /* Largeur */
+    max-width: 600px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-.hidden {
-  display: none !important;
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
 }
 
-input[type="text"], input[type="email"], input[type="password"] {
-  width: 100%;
-  padding: 0.7rem;
-  margin: 0.7rem 0;
-  border-radius: 4px;
-  border: none;
-  font-size: 1rem;
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.submit-btn {
-  width: 100%;
-  margin-top: 1rem;
+#modal-recipe-ingredients li {
+    margin-bottom: 5px;
 }
 
-.close-btn {
-  margin-top: 1rem;
-  background: transparent;
-  color: #00ff99;
-  font-weight: 600;
-  cursor: pointer;
+/* Design Réactif (Responsive Design) */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    .hero h2 {
+        font-size: 2.2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .content-section {
+        padding: 40px 15px;
+    }
+
+    .benefits-grid, .recipe-grid {
+        grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
+    }
 }
 
-.notification {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: #00ff99;
-  color: #121212;
-  padding: 1rem 1.5rem;
-  border-radius: 6px;
-  font-weight: 700;
-  box-shadow: 0 0 10px #00ff99aa;
-  z-index: 1000;
-  user-select: none;
+@media (max-width: 480px) {
+    .hero {
+        padding: 60px 15px;
+    }
+
+    .hero h2 {
+        font-size: 1.8em;
+    }
+
+    #decouvrirButton {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
 }
