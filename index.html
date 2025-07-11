@@ -1,142 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Modal</title>
-    <style>
-        /* CSS KODU BURAYA GELECEK */
-
-        /* Modal Background */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            display: flex; /* Use flexbox for centering */
-            align-items: center; /* Center vertically */
-            justify-content: center; /* Center horizontally */
-        }
-
-        /* Modal Content/Box */
-        .modal-content {
-            background-color: #fefefe;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
-            max-width: 500px; /* Max width for larger screens */
-            border-radius: 8px; /* Slightly rounded corners */
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-            position: relative; /* Needed for close button positioning */
-            animation-name: animatetop;
-            animation-duration: 0.4s;
-        }
-
-        /* The Close Button */
-        .close-button {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            position: absolute; /* Position relative to .modal-content */
-            top: 10px;
-            right: 15px;
-            cursor: pointer;
-        }
-
-        .close-button:hover,
-        .close-button:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* Add Animation (Optional) */
-        @keyframes animatetop {
-            from {top: -300px; opacity: 0}
-            to {top: 0; opacity: 1}
-        }
-
-        /* Some basic styling for the button */
-        #openModalBtn {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 50px; /* Just for demonstration to push it down */
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vie Saine avec la Nature</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <h1>Welcome to My Website</h1>
-    <p>Click the button below to see the modal:</p>
-
-    <button id="openModalBtn">Open My Modal</button>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Modal Title</h2>
-            <p>This is the content of your modal. You can put any text, images, or forms here.</p>
-            <p>Click outside the modal or on the "X" to close it.</p>
-        </div>
+    <header>
+        <h1>Vie Saine avec la Nature</h1>
+        <nav>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#bienfaits-nature">Bienfaits de la Nature</a></li>
+                <li><a href="#recettes-saines">Recettes Saines</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="accueil" class="hero">
+            <div class="hero-content">
+                <h2>L'Harmonie entre Nature et Santé</h2>
+                <p>Améliorons notre bien-être physique et mental grâce aux miracles que la nature nous offre. Air pur, aliments naturels et moments de paix...</p>
+                <button id="decouvrirButton">En savoir plus</button>
+            </div>
+        </section>
+        <section id="bienfaits-nature" class="content-section">
+            <h2>Les Bienfaits de la Nature pour la Santé</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h3>Réduction du Stress</h3>
+                    <p>Passer du temps dans la nature réduit le stress en diminuant les niveaux de cortisol.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Activité Physique</h3>
+                    <p>La nature offre un environnement idéal pour la marche, la course ou le vélo.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Renforcement Immunitaire</h3>
+                    <p>Les microbes et les composés végétaux des environnements naturels soutiennent l'immunité.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Qualité du Sommeil</h3>
+                    <p>L'exposition à la lumière naturelle a un impact positif sur nos cycles de sommeil.</p>
+                </div>
+            </div>
+        </section>
+        <section id="recettes-saines" class="content-section">
+            <h2>Recettes Naturelles et Saines</h2>
+            <div class="recipe-grid">
+                <div class="recipe-item">
+                    <h3>Smoothie Vert</h3>
+                    <p>Un excellent début de journée plein d'énergie avec épinards, banane, pomme, menthe.</p>
+                    <button class="recipe-detail-button" data-recipe="green-smoothie">Voir la Recette</button>
+                </div>
+                <div class="recipe-item">
+                    <h3>Soupe aux Lentilles</h3>
+                    <p>Un classique nourrissant et réconfortant, ami de l'immunité.</p>
+                    <button class="recipe-detail-button" data-recipe="lentil-soup">Voir la Recette</button>
+                </div>
+            </div>
+            <div id="recipe-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h3 id="modal-recipe-title"></h3>
+                    <p id="modal-recipe-description"></p>
+                    <ul id="modal-recipe-ingredients"></ul>
+                    <p id="modal-recipe-instructions"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Vie Saine avec la Nature. Tous droits réservés.</p>
+    </footer>
+    <script src="script.js"></script>
+    <div id="info-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button info-modal-close">&times;</span>
+        <h2>Discover More About Healthy Living!</h2>
+        <p>This modal can contain additional information about the benefits of nature, your philosophy, or a call to action. It opens when the "En savoir plus" button is clicked.</p>
+        <p>Feel free to customize this content.</p>
     </div>
-
-    <script>
-        /* JAVASCRIPT KODU BURAYA GELECEK */
-
-        // Get the modal element by its ID
-        var modal = document.getElementById("myModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("openModalBtn"); 
-
-        // Get the <span> element that closes the modal (the "x" button)
-        var span = document.getElementsByClassName("close-button")[0];
-
-        // --- Function to open the modal ---
-        function openModal() {
-          modal.style.display = "flex"; // Use flex to re-enable centering
-        }
-
-        // --- Function to close the modal ---
-        function closeModal() {
-          modal.style.display = "none"; // Hide the modal
-        }
-
-        // When the user clicks on the button, open the modal
-        if (btn) { // Check if the button element exists
-          btn.onclick = function() {
-            openModal();
-          }
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        if (span) { // Check if the close button element exists
-          span.onclick = function() {
-            closeModal();
-          }
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-          if (event.target == modal) { // If the clicked element is the modal background
-            closeModal();
-          }
-        }
-
-        // Ensure the modal is hidden when the page loads.
-        document.addEventListener('DOMContentLoaded', function() {
-            if (modal) { // Check if the modal element exists
-                modal.style.display = 'none';
-            }
-        });
-    </script>
-
+</div>
 </body>
 </html>
