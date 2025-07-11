@@ -1,4 +1,4 @@
-/* Paramètres Généraux */
+/* Genel Ayarlar */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -11,7 +11,7 @@ body {
 
 /* Header */
 header {
-    background-color: #4CAF50; /* Vert inspiré de la nature */
+    background-color: #4CAF50; /* Doğa dostu yeşil */
     color: white;
     padding: 1rem 0;
     text-align: center;
@@ -43,16 +43,16 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #d4edda; /* Vert clair */
+    color: #d4edda; /* Açık yeşil */
 }
 
-/* Section Héro (Accueil) */
+/* Hero Section (Anasayfa) */
 .hero {
-    background: url('https://via.placeholder.com/1500x800/66bb6a/ffffff?text=Paysage+Naturel') no-repeat center center/cover;
+    background: url('https://via.placeholder.com/1500x800/66bb6a/ffffff?text=Do%C4%9Fa+Manzaras%C4%B1') no-repeat center center/cover;
     color: white;
     text-align: center;
     padding: 100px 20px;
-    height: 60vh; /* 60% de la hauteur de l'écran */
+    height: 60vh; /* Ekran yüksekliğinin %60'ı */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,7 +60,7 @@ nav ul li a:hover {
 }
 
 .hero-content {
-    background-color: rgba(0,0,0,0.5); /* Arrière-plan semi-transparent pour la lisibilité */
+    background-color: rgba(0,0,0,0.5); /* Okunurluk için yarı saydam arka plan */
     padding: 30px;
     border-radius: 10px;
 }
@@ -77,8 +77,8 @@ nav ul li a:hover {
     margin: 0 auto 30px auto;
 }
 
-#decouvrirButton {
-    background-color: #2E7D32; /* Vert foncé */
+#kesfetButton {
+    background-color: #2E7D32; /* Koyu yeşil */
     color: white;
     padding: 15px 30px;
     border: none;
@@ -88,11 +88,11 @@ nav ul li a:hover {
     transition: background-color 0.3s ease;
 }
 
-#decouvrirButton:hover {
-    background-color: #1B5E20; /* Vert plus foncé */
+#kesfetButton:hover {
+    background-color: #1B5E20; /* Daha koyu yeşil */
 }
 
-/* Sections de Contenu */
+/* İçerik Bölümleri */
 .content-section {
     padding: 60px 20px;
     max-width: 1000px;
@@ -111,7 +111,7 @@ nav ul li a:hover {
     padding-bottom: 15px;
 }
 
-/* Grille des Bienfaits */
+/* Faydalar Gridi */
 .benefits-grid, .recipe-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -120,7 +120,7 @@ nav ul li a:hover {
 }
 
 .benefit-item, .recipe-item {
-    background-color: #f4fce3; /* Vert pastel clair */
+    background-color: #f4fce3; /* Açık pastel yeşil */
     padding: 25px;
     border-radius: 8px;
     text-align: center;
@@ -153,6 +153,54 @@ nav ul li a:hover {
     background-color: #4CAF50;
 }
 
+/* İletişim Formu Stilleri */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 30px auto 0 auto;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.contact-form label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.contact-form textarea {
+    resize: vertical; /* Sadece dikeyde boyutlandırmaya izin ver */
+}
+
+.contact-form button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button[type="submit"]:hover {
+    background-color: #388E3C;
+}
+
+
 /* Footer */
 footer {
     background-color: #333;
@@ -162,20 +210,20 @@ footer {
     margin-top: 50px;
 }
 
-/* Styles du Modal (Popup) */
+/* Modal (Popup) Stilleri - Önemli: display: none; */
 .modal {
-    display: none; /* Masqué par défaut */
-    position: fixed; /* Reste au-dessus de l'écran */
-    z-index: 1000; /* Au-dessus de tout le reste */
+    display: none; /* <-- BU SATIR ÇOK ÖNEMLİ: Varsayılan olarak gizli kalmasını sağlar */
+    position: fixed; /* Ekranın üzerinde durur */
+    z-index: 1000; /* Diğer her şeyin üstünde */
     left: 0;
     top: 0;
-    width: 100%; /* Pleine largeur */
-    height: 100%; /* Pleine hauteur */
-    overflow: auto; /* Barre de défilement si le contenu déborde */
-    background-color: rgba(0,0,0,0.7); /* Arrière-plan noir semi-transparent */
-    display: flex; /* Pour centrer le contenu */
-    align-items: center; /* Centrage vertical */
-    justify-content: center; /* Centrage horizontal */
+    width: 100%; /* Tam genişlik */
+    height: 100%; /* Tam yükseklik */
+    overflow: auto; /* İçerik taşarsa kaydırma çubuğu */
+    background-color: rgba(0,0,0,0.7); /* Yarı saydam siyah arka plan */
+    display: flex; /* İçeriği ortalamak için kullanılır ama başlangıçta 'none' olduğu için sorun olmaz */
+    align-items: center; /* Dikeyde ortala */
+    justify-content: center; /* Yatayda ortala */
 }
 
 .modal-content {
@@ -183,7 +231,7 @@ footer {
     margin: auto;
     padding: 30px;
     border: 1px solid #888;
-    width: 80%; /* Largeur */
+    width: 80%; /* Genişlik */
     max-width: 600px;
     border-radius: 10px;
     position: relative;
@@ -212,7 +260,7 @@ footer {
     margin-bottom: 5px;
 }
 
-/* Design Réactif (Responsive Design) */
+/* Duyarlı Tasarım (Responsive Design) */
 @media (max-width: 768px) {
     header h1 {
         font-size: 2em;
@@ -240,7 +288,7 @@ footer {
     }
 
     .benefits-grid, .recipe-grid {
-        grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
+        grid-template-columns: 1fr; /* Küçük ekranlarda tek sütun */
     }
 }
 
@@ -253,7 +301,7 @@ footer {
         font-size: 1.8em;
     }
 
-    #decouvrirButton {
+    #kesfetButton {
         padding: 12px 25px;
         font-size: 1em;
     }
