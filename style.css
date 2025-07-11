@@ -300,7 +300,74 @@ footer {
     .hero h2 {
         font-size: 1.8em;
     }
+/* --- Modal Genel Stilleri --- */
+.modal {
+    display: none; /* Başlangıçta gizli: Bu, modalın sayfa yüklenir yüklenmez görünmesini engeller */
+    position: fixed; /* Ekranın belirli bir noktasında kalır */
+    z-index: 1000; /* Diğer tüm elementlerin üzerinde görünür */
+    left: 0;
+    top: 0;
+    width: 100%; /* Tam genişlik */
+    height: 100%; /* Tam yükseklik */
+    overflow: auto; /* İçerik taşarsa kaydırma çubuğu çıkarır */
+    background-color: rgba(0,0,0,0.6); /* Arka planı hafifçe karartır (daha belirgin) */
+    
+    /* İçeriği dikey ve yatay olarak ortalamak için Flexbox */
+    display: flex; /* JavaScript ile "flex" olarak değiştirildiğinde ortalamayı sağlar */
+    align-items: center; 
+    justify-content: center; 
+}
 
+/* --- Modal İçerik Kutusu Stilleri --- */
+.modal-content {
+    background-color: #fefefe; /* Beyaz arka plan */
+    padding: 30px; /* İç boşluk */
+    border: 1px solid #ddd;
+    width: 90%; /* Ekran genişliğinin %90'ı */
+    max-width: 600px; /* Maksimum genişlik */
+    border-radius: 10px; /* Yuvarlak köşeler */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Gölge efekti */
+    position: relative; /* Kapatma düğmesi için gerekli */
+    animation-name: animatetop; /* Açılış animasyonu */
+    animation-duration: 0.4s;
+}
+
+/* --- Kapatma Düğmesi Stilleri (X işareti) --- */
+.close-button {
+    color: #888;
+    font-size: 32px;
+    font-weight: bold;
+    position: absolute; /* modal-content'e göre konumlanır */
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+/* --- Açılış Animasyonu (İsteğe Bağlı) --- */
+@keyframes animatetop {
+    from { top: -300px; opacity: 0; }
+    to { top: 0; opacity: 1; }
+}
+
+/* --- Responsive Ayarlamalar (Opsiyonel) --- */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%; /* Küçük ekranlarda daha geniş */
+        padding: 20px;
+    }
+    .close-button {
+        font-size: 28px;
+        top: 8px;
+        right: 15px;
+    }
+}
     #kesfetButton {
         padding: 12px 25px;
         font-size: 1em;
