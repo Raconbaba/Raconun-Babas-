@@ -1,144 +1,99 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { 
-  getAuth, 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword,
-  signOut,
-  updateProfile,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAnw_JgoA7ZrVCG94pRc-KExFu2v7SenYw",
-  authDomain: "raconubabasi.firebaseapp.com",
-  projectId: "raconubabasi",
-  storageBucket: "raconubabasi.firebasestorage.app",
-  messagingSenderId: "14034844570",
-  appId: "1:14034844570:web:2c1dc1a596218e8d7e9823",
-  measurementId: "G-L5WBB2BYYJ"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-const btnLogin = document.getElementById("btnLogin");
-const btnRegister = document.getElementById("btnRegister");
-const btnLogout = document.getElementById("btnLogout");
-const userDisplay = document.getElementById("userDisplay");
-
-const modal = document.getElementById("modal");
-const modalTitle = document.getElementById("modalTitle");
-const authForm = document.getElementById("authForm");
-const modalClose = document.getElementById("modalClose");
-const usernameInput = document.getElementById("usernameInput");
-const emailInput = document.getElementById("emailInput");
-const passwordInput = document.getElementById("passwordInput");
-const submitBtn = authForm.querySelector(".submit-btn");
-
-let currentMode = null; // "login" veya "register"
-
-function showNotification(text) {
-  notification.textContent = text;
-  notification.classList.remove("hidden");
-  setTimeout(() => notification.classList.add("hidden"), 2500);
-}
-
-function openModal(mode) {
-  currentMode = mode;
-  modalTitle.textContent = mode === "login" ? "Giriş Yap" : "Üye Ol";
-  submitBtn.textContent = mode === "login" ? "Giriş Yap" : "Kayıt Ol";
-  if (mode === "register") {
-    usernameInput.classList.remove("hidden");
-    usernameInput.required = true;
-    passwordInput.placeholder = "Şifre (en az 6 karakter)";
-  } else {
-    usernameInput.classList.add("hidden");
-    usernameInput.required = false;
-    passwordInput.placeholder = "Şifre";
-  }
-  emailInput.value = "";
-  passwordInput.value = "";
-  usernameInput.value = "";
-  modal.classList.remove("hidden");
-  emailInput.focus();
-}
-
-function closeModal() {
-  modal.classList.add("hidden");
-}
-
-btnLogin.addEventListener("click", () => openModal("login"));
-btnRegister.addEventListener("click", () => openModal("register"));
-modalClose.addEventListener("click", closeModal);
-
-authForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const email = emailInput.value.trim();
-  const password = passwordInput.value.trim();
-
-  if (currentMode === "login") {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        closeModal();
-        showNotification("Giriş Yapıldı ✔");
-      })
-      .catch((error) => alert("Hata: " + error.message));
-  } else {
-    const username = usernameInput.value.trim();
-    if (username.length < 3) {
-      alert("Kullanıcı adı en az 3 karakter olmalı");
-      return;
+document.addEventListener('DOMContentLoaded', () => {
+    // Bouton "En savoir plus" de la page d'accueil
+    const decouvrirButton = document.getElementById('decouvrirButton');
+    if (decouvrirButton) {
+        decouvrirButton.addEventListener('click', () => {
+            // Défilement doux vers la section "Bienfaits de la Nature"
+            document.getElementById('bienfaits-nature').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
     }
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        updateProfile(userCredential.user, { displayName: username })
-          .then(() => {
-            closeModal();
-            showNotification("Üye Olundu ✔");
-          });
-      })
-      .catch((error) => alert("Hata: " + error.message));
-  }
-});
 
-btnLogout.addEventListener("click", () => {
-  signOut(auth)
-    .then(() => {
-      userDisplay.textContent = "";
-      btnLogin.style.display = "inline-block";
-      btnRegister.style.display = "inline-block";
-      btnLogout.style.display = "none";
-      showNotification("Çıkış Yapıldı");
-    })
-    .catch((error) => alert("Hata: " + error.message));
-});
+    // Fonctionnalité du Modal (Popup) pour les Recettes Saines
+    const recipeModal = document.getElementById('recipe-modal');
+    const closeButton = document.querySelector('.close-button');
+    const recipeDetailButtons = document.querySelectorAll('.recipe-detail-button');
+    const modalRecipeTitle = document.getElementById('modal-recipe-title');
+    const modalRecipeDescription = document.getElementById('modal-recipe-description');
+    const modalRecipeIngredients = document.getElementById('modal-recipe-ingredients');
+    const modalRecipeInstructions = document.getElementById('modal-recipe-instructions');
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    const displayName = user.displayName || user.email;
-    userDisplay.innerHTML = `<span id="username">${displayName}</span><br><small id="userEmail" style="display:none; font-size:0.75rem; color:#aaa;">${user.email}</small>`;
-
-    btnLogin.style.display = "none";
-    btnRegister.style.display = "none";
-    btnLogout.style.display = "inline-block";
-
-    const usernameSpan = document.getElementById("username");
-    const emailSmall = document.getElementById("userEmail");
-    usernameSpan.style.cursor = "pointer";
-
-    usernameSpan.onclick = () => {
-      if(emailSmall.style.display === "none"){
-        emailSmall.style.display = "block";
-      } else {
-        emailSmall.style.display = "none";
-      }
+    const recipes = {
+        'green-smoothie': {
+            title: 'Smoothie Vert',
+            description: 'Un excellent départ pour faire le plein d\'énergie le matin.',
+            ingredients: [
+                '1 poignée d\'épinards',
+                '1 banane',
+                '1 pomme (pelée, épépinée)',
+                'Jus d\'un demi-citron',
+                '1/2 tasse d\'eau ou de lait végétal',
+                'Optionnel : quelques feuilles de menthe'
+            ],
+            instructions: 'Mélangez tous les ingrédients dans un mixeur jusqu\'à obtenir une consistance lisse et consommez immédiatement.'
+        },
+        'lentil-soup': {
+            title: 'Soupe aux Lentilles',
+            description: 'Un classique incontournable des journées froides, à la fois nourrissante et réconfortante.',
+            ingredients: [
+                '1 tasse de lentilles corail',
+                '1 oignon (haché)',
+                '1 carotte (hachée)',
+                '1 pomme de terre (hachée)',
+                '6 tasses d\'eau chaude ou de bouillon de légumes',
+                'Sel, poivre, menthe, piment rouge (optionnel)',
+                'Huile d\'olive'
+            ],
+            instructions: 'Rincez les lentilles. Dans une casserole, faites revenir l\'oignon dans l\'huile d\'olive. Ajoutez la carotte et la pomme de terre et faites revenir un peu plus. Ajoutez les lentilles et l\'eau, puis laissez bouillir. Une fois les légumes tendres, ajoutez les épices et mixez le tout au blender.'
+        }
     };
 
-  } else {
-    userDisplay.textContent = "";
-    btnLogin.style.display = "inline-block";
-    btnRegister.style.display = "inline-block";
-    btnLogout.style.display = "none";
-  }
+    recipeDetailButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const recipeKey = event.target.dataset.recipe;
+            const recipe = recipes[recipeKey];
+
+            if (recipe) {
+                modalRecipeTitle.textContent = recipe.title;
+                modalRecipeDescription.textContent = recipe.description;
+                
+                // Lister les ingrédients
+                modalRecipeIngredients.innerHTML = ''; // Nettoyer la liste précédente
+                recipe.ingredients.forEach(ingredient => {
+                    const li = document.createElement('li');
+                    li.textContent = ingredient;
+                    modalRecipeIngredients.appendChild(li);
+                });
+
+                modalRecipeInstructions.textContent = recipe.instructions;
+                recipeModal.style.display = 'flex'; // Afficher le modal
+            }
+        });
+    });
+
+    closeButton.addEventListener('click', () => {
+        recipeModal.style.display = 'none'; // Fermer le modal
+    });
+
+    // Fermer le modal si l'on clique en dehors
+    window.addEventListener('click', (event) => {
+        if (event.target === recipeModal) {
+            recipeModal.style.display = 'none';
+        }
+    });
+
+    // Défilement doux pour le menu de navigation
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault(); // Empêcher le comportement de lien par défaut
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 });
