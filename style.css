@@ -1,375 +1,88 @@
-/* Genel Ayarlar */
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f8f8f8;
-    color: #333;
-    line-height: 1.6;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: #eee;
+  text-align: center;
+  padding: 20px;
 }
 
-/* Header */
 header {
-    background-color: #4CAF50; /* Doğa dostu yeşil */
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
+h1 {
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
+button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  margin: 4px;
+  cursor: pointer;
 }
 
-nav ul li {
-    margin: 0 15px;
+button:hover {
+  background-color: #555;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+main {
+  margin-top: 50px;
 }
 
-nav ul li a:hover {
-    color: #d4edda; /* Açık yeşil */
+#racon-text {
+  font-size: 20px;
+  font-style: italic;
+  margin-bottom: 20px;
 }
 
-/* Hero Section (Anasayfa) */
-.hero {
-    background: url('https://via.placeholder.com/1500x800/66bb6a/ffffff?text=Do%C4%9Fa+Manzaras%C4%B1') no-repeat center center/cover;
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
-    height: 60vh; /* Ekran yüksekliğinin %60'ı */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.hidden {
+  display: none;
 }
 
-.hero-content {
-    background-color: rgba(0,0,0,0.5); /* Okunurluk için yarı saydam arka plan */
-    padding: 30px;
-    border-radius: 10px;
-}
-
-.hero h2 {
-    font-size: 3em;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-}
-
-.hero p {
-    font-size: 1.2em;
-    max-width: 700px;
-    margin: 0 auto 30px auto;
-}
-
-#kesfetButton {
-    background-color: #2E7D32; /* Koyu yeşil */
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#kesfetButton:hover {
-    background-color: #1B5E20; /* Daha koyu yeşil */
-}
-
-/* İçerik Bölümleri */
-.content-section {
-    padding: 60px 20px;
-    max-width: 1000px;
-    margin: 40px auto;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.content-section h2 {
-    text-align: center;
-    font-size: 2.2em;
-    color: #4CAF50;
-    margin-bottom: 40px;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 15px;
-}
-
-/* Faydalar Gridi */
-.benefits-grid, .recipe-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-}
-
-.benefit-item, .recipe-item {
-    background-color: #f4fce3; /* Açık pastel yeşil */
-    padding: 25px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-.benefit-item:hover, .recipe-item:hover {
-    transform: translateY(-5px);
-}
-
-.benefit-item h3, .recipe-item h3 {
-    color: #2E7D32;
-    margin-top: 0;
-    font-size: 1.5em;
-}
-
-.recipe-item button {
-    background-color: #66bb6a;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: background-color 0.3s ease;
-}
-
-.recipe-item button:hover {
-    background-color: #4CAF50;
-}
-
-/* İletişim Formu Stilleri */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    margin: 30px auto 0 auto;
-    padding: 20px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-.contact-form label {
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #4CAF50;
-}
-
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form textarea {
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-}
-
-.contact-form textarea {
-    resize: vertical; /* Sadece dikeyde boyutlandırmaya izin ver */
-}
-
-.contact-form button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 25px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.contact-form button[type="submit"]:hover {
-    background-color: #388E3C;
-}
-
-
-/* Footer */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 50px;
-}
-
-/* Modal (Popup) Stilleri - Önemli: display: none; */
+/* Modal */
 .modal {
-    display: none; /* <-- BU SATIR ÇOK ÖNEMLİ: Varsayılan olarak gizli kalmasını sağlar */
-    position: fixed; /* Ekranın üzerinde durur */
-    z-index: 1000; /* Diğer her şeyin üstünde */
-    left: 0;
-    top: 0;
-    width: 100%; /* Tam genişlik */
-    height: 100%; /* Tam yükseklik */
-    overflow: auto; /* İçerik taşarsa kaydırma çubuğu */
-    background-color: rgba(0,0,0,0.7); /* Yarı saydam siyah arka plan */
-    display: flex; /* İçeriği ortalamak için kullanılır ama başlangıçta 'none' olduğu için sorun olmaz */
-    align-items: center; /* Dikeyde ortala */
-    justify-content: center; /* Yatayda ortala */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 30px;
-    border: 1px solid #888;
-    width: 80%; /* Genişlik */
-    max-width: 600px;
-    border-radius: 10px;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
 }
 
-.close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    cursor: pointer;
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #444;
 }
 
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-#modal-recipe-ingredients li {
-    margin-bottom: 5px;
-}
-
-/* Duyarlı Tasarım (Responsive Design) */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2em;
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 5px 0;
-    }
-
-    .hero h2 {
-        font-size: 2.2em;
-    }
-
-    .hero p {
-        font-size: 1em;
-    }
-
-    .content-section {
-        padding: 40px 15px;
-    }
-
-    .benefits-grid, .recipe-grid {
-        grid-template-columns: 1fr; /* Küçük ekranlarda tek sütun */
-    }
-}
-
-@media (max-width: 480px) {
-    .hero {
-        padding: 60px 15px;
-    }
-
-    .hero h2 {
-        font-size: 1.8em;
-    }
-/* --- Modal Genel Stilleri --- */
-.modal {
-    display: none; /* Başlangıçta gizli: Bu, modalın sayfa yüklenir yüklenmez görünmesini engeller */
-    position: fixed; /* Ekranın belirli bir noktasında kalır */
-    z-index: 1000; /* Diğer tüm elementlerin üzerinde görünür */
-    left: 0;
-    top: 0;
-    width: 100%; /* Tam genişlik */
-    height: 100%; /* Tam yükseklik */
-    overflow: auto; /* İçerik taşarsa kaydırma çubuğu çıkarır */
-    background-color: rgba(0,0,0,0.6); /* Arka planı hafifçe karartır (daha belirgin) */
-    
-    /* İçeriği dikey ve yatay olarak ortalamak için Flexbox */
-    display: flex; /* JavaScript ile "flex" olarak değiştirildiğinde ortalamayı sağlar */
-    align-items: center; 
-    justify-content: center; 
-}
-
-/* --- Modal İçerik Kutusu Stilleri --- */
-.modal-content {
-    background-color: #fefefe; /* Beyaz arka plan */
-    padding: 30px; /* İç boşluk */
-    border: 1px solid #ddd;
-    width: 90%; /* Ekran genişliğinin %90'ı */
-    max-width: 600px; /* Maksimum genişlik */
-    border-radius: 10px; /* Yuvarlak köşeler */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Gölge efekti */
-    position: relative; /* Kapatma düğmesi için gerekli */
-    animation-name: animatetop; /* Açılış animasyonu */
-    animation-duration: 0.4s;
-}
-
-/* --- Kapatma Düğmesi Stilleri (X işareti) --- */
-.close-button {
-    color: #888;
-    font-size: 32px;
-    font-weight: bold;
-    position: absolute; /* modal-content'e göre konumlanır */
-    top: 10px;
-    right: 20px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: #333;
-    text-decoration: none;
-}
-
-/* --- Açılış Animasyonu (İsteğe Bağlı) --- */
-@keyframes animatetop {
-    from { top: -300px; opacity: 0; }
-    to { top: 0; opacity: 1; }
-}
-
-/* --- Responsive Ayarlamalar (Opsiyonel) --- */
-@media (max-width: 768px) {
-    .modal-content {
-        width: 95%; /* Küçük ekranlarda daha geniş */
-        padding: 20px;
-    }
-    .close-button {
-        font-size: 28px;
-        top: 8px;
-        right: 15px;
-    }
-}
-    #kesfetButton {
-        padding: 12px 25px;
-        font-size: 1em;
-    }
+#notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: green;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
 }
