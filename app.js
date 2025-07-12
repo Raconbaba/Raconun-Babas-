@@ -1,51 +1,32 @@
+/* ==== RASTGELE RACON ==== */
 const quotes = [
   "Bize racon kesilmez, biz yazarız.",
-  "Delikanlı adam sözünün arkasında durur.",
+  "Raconuna sahip çıkmayan, sokağını kaybeder.",
   "Yürek varsa konuş, yoksa sus!",
   "Masada dost, sokakta düşman olmayız.",
-  "Bizde laf ağızdan çıkmadan hesap edilir."
+  "Bizde laf ağızdan çıkmadan hesap edilir.",
+  "Delikanlı adam sözünün arkasında durur.",
+  "Dirayet bizde, hıyanet gördüğümüzde meydan bizde.",
+  "Sokağın kanunu bellidir, bozarsan bedeli ağırdır."
 ];
 
-function showRandomQuote() {
-  const racon = quotes[Math.floor(Math.random() * quotes.length)];
-  document.getElementById('racon-text').textContent = `"${racon}"`;
+function randomQuote () {
+  const q = quotes[Math.floor(Math.random() * quotes.length)];
+  document.getElementById("quote-text").textContent = `"${q}"`;
 }
 
-function openLogin() {
-  document.getElementById('modal-title').textContent = "Giriş Yap";
-  document.getElementById('modal').classList.remove('hidden');
-}
+/* ==== NAV SCROLL YARDIMCISI ==== */
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}
 
-function openRegister() {
-  document.getElementById('modal-title').textContent = "Üye Ol";
-  document.getElementById('modal').classList.remove('hidden');
-}
+/* ==== GİZLİ BÖLGE ==== */
+document.getElementById("secret-btn").addEventListener("click", e=>{
+  e.preventDefault();
+  const pass = prompt("Şifreyi gir Usta:");
+  if(pass==="racon"){
+    document.getElementById("secret").classList.remove("hidden");
+    scrollToSection("secret");
+  }else if(pass!==null){
+    alert("Yanlış şifre!");
+  }
+});
 
-function closeModal() {
-  document.getElementById('modal').classList.add('hidden');
-}
-
-function submitForm() {
-  const username = document.getElementById('username').value.trim();
-  if (!username) return alert("Kullanıcı adı boş olamaz.");
-
-  // Simülasyon: giriş başarılı
-  document.getElementById('auth-buttons').classList.add('hidden');
-  document.getElementById('user-info').classList.remove('hidden');
-  document.getElementById('username-display').textContent = `👤 ${username}`;
-  closeModal();
-  showNotification("Giriş başarılı!");
-}
-
-function logout() {
-  document.getElementById('auth-buttons').classList.remove('hidden');
-  document.getElementById('user-info').classList.add('hidden');
-  showNotification("Çıkış yapıldı!");
-}
-
-function showNotification(msg) {
-  const n = document.getElementById('notification');
-  n.textContent = msg;
-  n.classList.remove('hidden');
-  setTimeout(() => n.classList.add('hidden'), 3000);
-}
