@@ -3,38 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raconun Babası</title>
+  <title>Raconun Babası</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Raconun Babası</h1>
-    <div id="auth-buttons">
-      <button onclick="openLogin()">Giriş Yap</button>
-      <button onclick="openRegister()">Üye Ol</button>
-    </div>
-    <div id="user-info" class="hidden">
-      <span id="username-display">👤 Kullanıcı</span>
-      <button onclick="logout()">Çıkış</button>
+
+  <!-- ===== HERO / NAVBAR ===== -->
+  <header id="home">
+    <nav>
+      <h1>Raconun Babası</h1>
+      <ul>
+        <li><a href="#home">Ana Sayfa</a></li>
+        <li><a href="#quotes">Raconlar</a></li>
+        <li><a href="#gallery">Galeri</a></li>
+        <li><a href="#secret" id="secret-btn">Gizli Bölge</a></li>
+        <li><a href="#about">Hakkımızda</a></li>
+        <li><a href="#contact">İletişim</a></li>
+      </ul>
+    </nav>
+    <div class="hero-text">
+      <h2>“Delikanlı adam raconla yürür.”</h2>
+      <button onclick="scrollToSection('quotes')">Racon Kes</button>
     </div>
   </header>
 
-  <main>
-    <p id="racon-text">"Delikanlı adam sözünün arkasında durur."</p>
-    <button onclick="showRandomQuote()">Yeni Racon Göster</button>
-  </main>
+  <!-- ===== RACONLAR ===== -->
+  <section id="quotes">
+    <h3>Rastgele Racon</h3>
+    <p id="quote-text">"Sokakta adın geçmiyorsa racon kesme."</p>
+    <button onclick="randomQuote()">Yeni Racon Göster</button>
+  </section>
 
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <h2 id="modal-title">Giriş</h2>
-      <input id="username" type="text" placeholder="Kullanıcı adı" />
-      <input id="password" type="password" placeholder="Şifre" />
-      <button onclick="submitForm()">Gönder</button>
-      <button onclick="closeModal()">Kapat</button>
+  <!-- ===== GALERİ ===== -->
+  <section id="gallery">
+    <h3>Galeri</h3>
+    <div class="grid">
+      <img src="https://images.unsplash.com/photo-1521194372297-f872f32c28df?auto=format&fit=crop&w=500&q=60" alt="">
+      <img src="https://images.unsplash.com/photo-1555371361-1905e38e8c42?auto=format&fit=crop&w=500&q=60" alt="">
+      <img src="https://images.unsplash.com/photo-1608138275740-75fb9c13b085?auto=format&fit=crop&w=500&q=60" alt="">
+      <img src="https://images.unsplash.com/photo-1602610488992-a9c9ca0977d9?auto=format&fit=crop&w=500&q=60" alt="">
+      <img src="https://images.unsplash.com/photo-1503342452485-86b7f54527dd?auto=format&fit=crop&w=500&q=60" alt="">
+      <img src="https://images.unsplash.com/photo-1478749485505-2e0d1967a059?auto=format&fit=crop&w=500&q=60" alt="">
     </div>
-  </div>
+  </section>
 
-  <div id="notification" class="hidden">İşlem başarılı!</div>
+  <!-- ===== GİZLİ BÖLGE ===== -->
+  <section id="secret" class="hidden">
+    <h3>Gizli Bölge 🔒</h3>
+    <p>İftiralar, mason dosyaları, koloniler… Hepsi burada saklı.</p>
+  </section>
+
+  <!-- ===== HAKKIMIZDA ===== -->
+  <section id="about">
+    <h3>Hakkımızda</h3>
+    <p>Mahallenin raconunu yazar, sözünü kanun sayarız. Gölge adam olmayız; var olsak da belli etmeyiz.</p>
+  </section>
+
+  <!-- ===== İLETİŞİM ===== -->
+  <section id="contact">
+    <h3>İletişim</h3>
+    <p>📧 racon@baba.com | 📞 +90 555 555 55 55</p>
+  </section>
+
+  <footer>
+    © 2025 Raconun Babası – Usta’ya özel
+  </footer>
 
   <script src="app.js"></script>
 </body>
